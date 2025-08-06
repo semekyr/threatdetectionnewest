@@ -1,0 +1,30 @@
+[
+  {
+    "id": "Front Gate",
+    "type": "ip",
+    "source": "http://195.97.20.246:80/mjpg/video.mjpg",
+    "description": "Example IP Camera",
+    "alt": "IP Camera Feed"
+  },
+  {
+    "id": "Dublin",
+    "type": "youtube",
+    "source": "https://www.youtube.com/embed/u4UZ4UvZXrg?si=Qf5ZnGoYK6JhEDMt&autoplay=1&mute=1&controls=0&showinfo=0&rel=0",
+    "description": "Street cam from Dublin, Ireland",
+    "alt": ""
+  },
+  {
+    "id": "London",
+    "type": "youtube",
+    "source": "https://www.youtube.com/embed/57w2gYXjRic?si=69snVGVDEi-hymSM&autoplay=1&mute=1&controls=0&showinfo=0&rel=0",
+    "description": "Abbey Road Crossing",
+    "alt": ""
+  },
+  {
+    "id": "Road Test",
+    "type": "file",
+    "source": "models/roadtraffic.mp4",
+    "description": "Testing on road",
+    "alt": ""
+  }
+]
