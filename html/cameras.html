@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/cameras-style.css">
+        <link rel="stylesheet" href="../css/nav-bar.css">
+        <title>Camera Manager</title>
+    </head>
+    <body>
+        <h1>Camera Connections</h1>
+
+        <script src="../navigation-bar.js"></script>
+        <nav-bar></nav-bar>
+
+        <section id="add-camera-section">
+            <h2>Add New Camera</h2>
+            <form onsubmit="addCamera(event)" id="camera-form">
+                <label for="camera-id">Camera ID:</label>
+                <input type="text" id="camera-id" required>
+
+                <label for="camera-type">Type:</label>
+                <select id="camera-type">
+                    <option value="ip">IP</option>
+                    <option value="usb">USB</option>
+                    <option value="youtube">YouTube</option>
+                    <option value="file">File</option>
+                </select>
+
+                <label for="camera-src">Source URL or Path:</label>
+                <input type="text" id="camera-src" required>
+
+                <label for="camera-desc">Description:</label>
+                <input type="text" id="camera-desc">
+
+                <label for="camera-alt">Alternative Text (optional):</label>
+                <input type="text" id="camera-alt">
+
+                <button type="submit">Add Camera</button>
+                <input type="hidden" id="camera-form-mode" value="add">
+            </form>
+        </section>
+
+        <section id="camera-section">
+            <h2>Configured Cameras</h2>
+            <ul id="camera-list"></ul>
+        </section>
+
+        <script src="../renderer.js"></script>
+    </body>
+</html>
