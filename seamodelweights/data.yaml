@@ -1,0 +1,13 @@
+train: C:/Users/semel/Downloads/seamodelsystem/train/images
+val: C:/Users/semel/Downloads/seamodelsystem/train/images
+test: '' #not needed
+
+nc: 11
+names: ['a', 'buoy', 'civilianship', 'container', 'cruise', 'fish-b', 'fishing ship', 'human', 'tug boat', 'warship1', 'warship2']
+
+roboflow:
+  workspace: admobnattapong-rt
+  project: ship-data01
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/admobnattapong-rt/ship-data01/dataset/1
