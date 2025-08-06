@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/nav-bar.css">
+        <link rel="stylesheet" href="../css/alerts-style.css">
+        <title>Alerts</title>
+    </head>
+    <body>
+        <h1>Alert Configurations</h1>
+        <script src="../navigation-bar.js"></script>
+        <nav-bar></nav-bar>
+
+        <section id="upload-section">
+            <h2>Set Alert Configurations for Detection Rules</h2>
+            <form onsubmit="addAlertConfig(event)">
+            <label for="object-type">Object Type:
+                <select  id="object-type" >
+                </select>
+            </label>
+
+            <label for="alert-email">Email Alert:
+            <input type="email" id="alert-email" placeholder="email@example.com"></label>
+
+            <label for="alert-viber">Viber Alert Token:
+            <input type="text" id="alert-viber" placeholder="Viber Token"></label>
+
+            <label for="alert-api">API Endpoint:
+            <input type="url" id="alert-api" placeholder="https://your-api.com/alert"></label><br>
+
+            <button type="submit">Save Alert Configuration</button>
+            </form>
+        </section>
+
+        <section id="display-section">
+            <h2>Configured Alerts</h2>
+            <ul id="alerts-list"></ul>
+        </section>
+
+        <script src="../renderer.js"></script>
+    </body>
+</html>

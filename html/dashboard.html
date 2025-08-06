@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/dashboard-style.css">
+        <link rel="stylesheet" href="../css/nav-bar.css">
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <h1>Dashboard</h1>
+        <script src="../navigation-bar.js"></script>
+        <nav-bar></nav-bar>
+
+        <section>
+            <h2>Live Camera Feeds</h2>
+            <section class="cameras" id="camera-section">
+            </section>
+        </section>
+
+        <section>
+            <h2>Recent Alerts</h2>
+            <ul id="recentAlerts">
+                <li>[10:12:34] Intruder detected at Camera 1</li>
+            </ul>
+        </section>
+
+        <section id="detection-section">
+            <h2>Detection System</h2>
+            <div class="detection-controls">
+                <button id="startDetectionBtn" onclick="startDetection()">Start Detection</button>
+                <button id="stopDetectionBtn" onclick="stopDetection()" style="display: none;">Stop Detection</button>
+                <span id="detectionStatus" class="status-stopped">Detection Stopped</span>
+            </div>
+        </section>
+
+        <script src="../renderer.js"></script>
+    </body>
+</html>

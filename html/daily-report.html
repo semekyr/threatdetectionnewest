@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #007bff;
+            margin: 0;
+            font-size: 28px;
+        }
+        .date {
+            color: #666;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #333;
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .metrics {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            flex: 1;
+            min-width: 120px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            display: block;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        .status-good { color: #28a745; }
+        .status-warning { color: #ffc107; }
+        .status-error { color: #dc3545; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .data-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #495057;
+        }
+        .data-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        .summary-text {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+            font-style: italic;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            color: #666;
+            font-size: 14px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        
+        /* Email client compatibility */
+        @media only screen and (max-width: 600px) {
+            .metrics {
+                flex-direction: column;
+            }
+            .metric-card {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Threat Detection System</h1>
+            <h1>Daily Report</h1>
+            <div class="date" id="report-date"></div>
+        </div>
+
+        <div class="section">
+            <h2>📊 System Overview</h2>
+            <div class="metrics" id="general-info">
+                <div class="metric-card">
+                    <span class="metric-value" id="active-cameras"></span>
+                    <div class="metric-label">Active Cameras</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value" id="detections-num"></span>
+                    <div class="metric-label">Detections Today</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value" id="alert-count">{{ALERTS_SENT}}</span>
+                    <div class="metric-label">Alerts Sent</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="detection-sum">
+            <h2>🎯 Detection Summary</h2>
+            <div class="summary-text">
+                {{DETECTION_SUMMARY}}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📹 Cameras</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Camera ID</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="camera-table-body">
+                    <tr>
+                        <td>Camera 1 - Main Entrance</td>
+                        <td>{{CAMERA1_DETECTIONS}}</td>
+                        <td>Human, Vehicle</td>
+                        <td><span class="status-good">●</span> Online</td>
+                    </tr>
+                    <tr>
+                        <td>Camera 2 - Parking Area</td>
+                        <td>{{CAMERA2_DETECTIONS}}</td>
+                        <td>Vehicle, Human</td>
+                        <td><span class="status-good">●</span> Online</td>
+                    </tr>
+                    <tr>
+                        <td>Camera 3 - Perimeter</td>
+                        <td>{{CAMERA3_DETECTIONS}}</td>
+                        <td>Human</td>
+                        <td><span class="status-warning">●</span> Low Signal</td>
+                    </tr>
+                    <tr>
+                        <td>Camera 4 - Storage Room</td>
+                        <td>{{CAMERA4_DETECTIONS}}</td>
+                        <td>None</td>
+                        <td><span class="status-error">●</span> Offline</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🚨 Security Alerts & Incidents</h2>
+            <div class="summary-text">
+                <ul id="alerts">
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer" id="footer">
+            <p>This security report was automatically generated by SignalGeneriX on {{GENERATION_TIME}}</p>
+            <p>For security concerns or technical support, contact: {{SECURITY_EMAIL}}</p>
+        </div>
+    </div>
+    <script src="../reportRenderer.js"></script>
+</body>
+</html>

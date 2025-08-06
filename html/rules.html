@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/rules-style.css">
+        <link rel="stylesheet" href="../css/nav-bar.css">
+        <title>Detection Rules</title>
+    </head>
+    <body>
+        <h1>Detection Rules</h1>
+
+        <script src="../navigation-bar.js"></script>
+        <nav-bar></nav-bar>
+        
+        <section id="display-section">
+            <h2>Current Rules</h2>
+            <ul id="rules-list"></ul>
+        </section>
+
+        <section id="upload-section">
+            <h2>Configure Time-Based Detection Rules</h2>
+            <form onsubmit="addRule(event)">
+                <label for="object-type">
+                    Object Type: 
+                    <select id="object-type">
+                        <option value="human">Human</option>
+                        <option value="weapon">Weapon</option>
+                        <option value="vehicle">Vehicle</option>
+                    </select>
+                </label>
+                <label for="start-time">
+                    Start Time: 
+                    <input type="time" id="start-time" required>
+                </label>
+                <label for="end-time">
+                    End Time: 
+                    <input type="time" id="end-time" required>
+                </label>
+                <label for="all-day">
+                    <input type="checkbox" id="all-day" onchange="toggleTimeInputs()">
+                    All Day
+                </label>
+                <br>
+                <button type="submit">Add Rule</button>
+            </form>
+        </section>
+
+        <script src="../renderer.js"></script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/nav-bar.css">
+        <link rel="stylesheet" href="../css/logs-style.css">
+        <title>Logs</title>
+    </head>
+    <body>
+        <h1>System Logs</h1>
+        <script src="../navigation-bar.js"></script>
+        <nav-bar></nav-bar>
+
+    <section>
+    <h2>Recent Events</h2>
+
+    <div>
+        <span>
+            <label for="log-filter">Filter by Type:</label>
+            <select id="log-filter" onchange="loadLogs()">
+                <option value="all">All</option>
+                <option value="info">Info</option>
+                <option value="warning">Warning</option>
+                <option value="error">Error</option>
+            </select>
+        </span>
+      <button onclick="exportLogs()">Export Logs</button>
+    </div>
+
+    <ul id="logs-list"></ul>
+  </section>
+
+
+        <script src="../renderer.js"></script>
+    </body>
+</html>

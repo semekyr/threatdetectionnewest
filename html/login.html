@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initital-scale-1.0">
+        <title>Threat Detection UI - Login</title>
+        <link rel="stylesheet" href="../css/login-style.css">
+    </head>
+    <body>
+        <main>
+            <h1>Login</h1>
+            <form id="login-info" onsubmit="login(event)">
+                <label for="username">Username: <input required type="text" name="username" id="username" placeholder="Username"></label>
+                <label for="password">Password: <input required type="password" name="password" id="password" placeholder="Password" minlength="8" 
+                    pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" title="Minimum length: 8. Must inlcude at least 1 uppercase, lowercase and number"></label>
+                <button type="submit" id="submit">Login</button>
+            </form>
+
+            <p id="login-response"></p>
+        </main>
+
+        <script src="../renderer.js"></script>
+    </body>
+</html>
