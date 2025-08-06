@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+h2 {
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  color: #495057;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+section {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul:empty::after {
+  content: "No models configured yet.";
+  display: block;
+  padding: 20px;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+}
+
+ul li {
+  background: #f8f9fa;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+  overflow-wrap:break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+ul li:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #495057;
+  gap: 8px;
+}
+
+select, input[type="text"] {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+select:focus, input[type="text"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+select {
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background: #3498db;
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  min-width: 120px;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.3);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 70px;
+  margin-top: 0.3rem;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.edit-btn{
+      background-color: #45a049;
+}
+
+.edit-btn:hover{
+      background-color: #2e7d32;
+}
+
+@media (max-width: 768px) {
+  section {
+      margin: 0 1rem 2rem;
+      padding: 1.5rem;
+  }
+   
+  h1 {
+      font-size: 2rem;
+      padding: 1.5rem 0;
+  }
+    
+  h2 {
+      font-size: 1.25rem;
+  }
+
+  .list-item p{
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+}

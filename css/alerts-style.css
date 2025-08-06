@@ -1,0 +1,326 @@
+/* Alerts Page Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+h2 {
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  color: #495057;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* Section Styling */
+section {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  display: inline;
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 15px;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="url"],
+select {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+  width: 100%;
+  margin-top: 10px;
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="url"]:focus,
+select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="url"]::placeholder {
+  color: #999;
+}
+
+/* Button Styling */
+button[type="submit"] {
+  background: #3498db;
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  min-width: 180px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.3);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Alerts List Styling */
+#alerts-list {
+  list-style: none;
+  padding: 0;
+}
+
+#alerts-list li {
+  background: #f8f9fa;
+  margin-bottom: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#alerts-list li:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.alert-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alert-actions label{
+  width: 100%;
+}
+
+.alert-actions button{
+  width: 100%;
+}
+
+/* Empty state for alerts list */
+#alerts-list:empty::after {
+  content: "No alert configurations set up yet.";
+  display: block;
+  padding: 20px;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+}
+
+/* Alert details styling */
+.alert-details {
+  flex: 1;
+  min-width: 200px;
+}
+
+.alert-rule-id {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+}
+
+.alert-methods {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+.alert-method {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-right: 8px;
+  margin-bottom: 4px;
+}
+
+/* Delete button for alerts */
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 70px;
+  max-height: fit-content;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Form field groups for better organization */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Optional field styling */
+.optional-field {
+  opacity: 0.8;
+}
+
+.optional-field label {
+  position: relative;
+}
+
+.optional-field label::after {
+  content: " (optional)";
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+  
+  section {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    gap: 15px;
+  }
+  
+  label {
+    gap: 6px;
+  }
+  
+  input[type="text"], 
+  input[type="email"], 
+  input[type="url"],
+  select {
+    padding: 10px;
+  }
+  
+  button[type="submit"] {
+    padding: 12px 24px;
+    align-self: stretch;
+    min-width: auto;
+  }
+  
+  #alerts-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .delete-btn {
+    align-self: flex-end;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  .delete-btn {
+    align-self: stretch;
+    text-align: center;
+  }
+  
+  .alert-method {
+    margin-right: 4px;
+    margin-bottom: 2px;
+  }
+}

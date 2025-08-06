@@ -1,0 +1,53 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+}
+
+#login-response{
+    margin-top: 20px;
+    font-weight: bold;
+    color: #FF6363;
+}
+
+input {
+  padding: 10px;
+  margin: 10px auto;
+  width: 95%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button{
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+form{
+    display: block;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 300px;
+}
+
+label{
+    text-align: left;
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    padding: 0 5%;
+}
