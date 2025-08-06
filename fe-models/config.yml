@@ -1,0 +1,73 @@
+yolov5_deepsort:
+  YOLO:
+  # COCO IDs for now:
+    classes:
+    - 0 # person
+    - 2 # car
+    - 5 # bus
+    - 7 # truck
+    img_size: 640
+    weights: '' # leave empty if pre-trained weights are used
+  dataloader:
+    data_path: "./models/roadtraffic.mp4" # path to video file or webcam ID (CHANGE)
+    data_source: "video file" # or live
+    frame_height: 720
+    frame_width: 1280
+    webcam_id: null
+  detection_schedule:
+    car:
+    - start: '00:00'
+      end: '23:59'
+    person:
+    - start: '00:00'
+      end: '23:59'
+    bus:
+    - start: '00:00'
+      end: '23:59'
+    truck:
+    - start: '00:00'
+      end: '23:59'
+  alert_configs:
+    car:
+      enabled: true
+      channels:
+        email: "admin@company.com,security@company.com"
+        viber: ""
+        api: "https://api.company.com/alerts"
+      confidence_min: 0.8
+  detector:
+    available_classes:
+    - person
+    - car
+    - bus
+    - truck
+    confidence_threshold: 0.1
+    disp_obj_detect_box: true
+    downscale_factor: 2
+    model_name: yolov5n # model name is either a string from the YOLO model zoo or 'custom' for custom weights
+    # REMEMBER TO CHECK THIS IS CORRECTLY MAPPED IN A DICTIONARY!
+    tracked_class: ['person', 'car', 'bus', 'truck']
+  main:
+    active: true
+    disp_fps: true
+    disp_obj_count: true
+    model_name: yolov5n
+  tracker:
+    bgr: false
+    disp_obj_track_box: true
+    disp_tracks: true
+    embedder: "mobilenet"
+    embedder_gpu: true
+    embedder_model_name: "mobilenetv2_x1_0"
+    embedder_wts: null
+    half: true
+    max_age: 5
+    max_cosine_distance: 0.3
+    n_init: 1
+    nms_max_overlap: 1.0
+    nn_budget: null
+    obj_track_color: (51,255,255)
+    obj_track_box_color: (0,0,255)
+    override_track_class: null
+    polygon: false
+    today: None
