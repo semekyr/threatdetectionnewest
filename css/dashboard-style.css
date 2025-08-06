@@ -1,0 +1,220 @@
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+
+body{
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+
+
+/* Section Styling */
+section:not(.cameras) {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+
+.video-feed {
+  border: none;
+  padding: 15px;
+  margin: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  
+  flex: 1 1 calc(50% - 20px);
+  min-width: 300px;
+}
+
+.video-feed:hover{
+  cursor: pointer;
+}
+
+
+.video-feed.zoomed {
+    width: 100%;
+    flex: none;
+}
+
+
+.cameras {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 20px;
+  padding: 20px 10px;
+}
+
+/* Force last odd video to align left */
+.cameras::after {
+  content: "";
+  flex: 1 1 calc(50% - 20px);
+  min-width: 300px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 12px 16px;
+  color: #dc3545;
+  background: #fff5f5;
+  border-left: 4px solid #dc3545;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+#recentAlerts:empty::after {
+  content: "No recent alerts found.";
+  display: block;
+  padding: 20px;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+}
+
+h2{
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  color: #495057;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+img, video, iframe{
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  /* Disable interactions on media elements */
+  pointer-events: none;
+  user-select: none;
+}
+
+iframe{
+  width: 100%;
+  height: 100%;
+  border: none;
+  aspect-ratio: 16/9;
+}
+
+/* Responsive breakpoints for video layout */
+@media (max-width: 768px) {
+  .video-feed {
+    flex: 1 1 100%;
+    min-width: 280px;
+  }
+  
+  .cameras {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .video-feed .cameras::after {
+    flex: 1 1 calc(50% - 20px);
+  }
+  
+}
+
+@media (min-width: 1201px) {
+  .video-feed .cameras::after{
+    flex: 1 1 calc(50% - 20px);
+
+  }
+}
+
+/* Detection System Styles */
+.detection-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+#startDetectionBtn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+#startDetectionBtn:hover {
+  background-color: #218838;
+}
+
+#stopDetectionBtn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+#stopDetectionBtn:hover {
+  background-color: #c82333;
+}
+
+#detectionStatus {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.status-running {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-stopped {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.status-error {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
