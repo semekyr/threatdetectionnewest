@@ -1,0 +1,46 @@
+{
+  "name": "threat-detection-system",
+  "version": "1.0.0",
+  "description": "application used to monitor and configure a system used for threat detection",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "nikolas pomiloridis",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^36.6.0",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.35.0",
+    "@influxdata/influxdb-client-apis": "^1.35.0",
+    "@influxdata/influxdb3-client": "^1.1.0",
+    "@supabase/supabase-js": "^2.50.0",
+    "axios": "^1.10.0",
+    "dotenv": "^16.6.1",
+    "electron-squirrel-startup": "^1.0.1",
+    "js-yaml": "^4.1.0",
+    "nodemailer": "^7.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/semekyr/threatdetectionsystem.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/semekyr/threatdetectionsystem/issues"
+  },
+  "homepage": "https://github.com/semekyr/threatdetectionsystem#readme"
+}
