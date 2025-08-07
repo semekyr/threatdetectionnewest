@@ -1,14 +1,8 @@
-train: personswithweapons/train/images
-val: personswithweapons/valid/images
-test: personswithweapons/test/images
+path: C:/Users/semel/Downloads/threatdetectionNEWEST/moreweaponsdataset
 
-nc: 5
-names: ['gun', 'knife', 'person', 'pistol', 'rifle']
+train: 'C:/Users/semel/Downloads/threatdetectionNEWEST/moreweaponsdataset/train/images'
+val: 'C:/Users/semel/Downloads/threatdetectionNEWEST/moreweaponsdataset/valid/images'
+test: 'C:/Users/semel/Downloads/threatdetectionNEWEST/moreweaponsdataset/test/images'
 
-
-roboflow:
-  workspace: project
-  project: persons-with-weapons
-  version: 1
-  license: CC BY 4.0
-  url: https://universe.roboflow.com/project/persons-with-weapons/dataset/1
+nc: 3
+names: ['gun', 'knife', 'person']
