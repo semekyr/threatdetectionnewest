@@ -1,0 +1,9 @@
+flask
+pyyaml
+requests
+opencv-python
+torch
+torchvision
+deep-sort-realtime
+ultralytics
+seaborn
