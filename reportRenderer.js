@@ -76,8 +76,21 @@ function checkCameraOnline(camera){
         return checkIPCameraOnline(camera)
     else if(camera.type === 'youtube')
         return checkYouTubeOnline(camera)
-
+    // ADD THIS FOR LOCAL FILES:
+    else if (camera.type === 'file')
+        return checkFileCameraOnline(camera)
     return Promise.resolve(false)
+}
+
+function checkFileCameraOnline(camera) {
+    // For file-based cameras, assume they are available if a source path exists
+    return new Promise((resolve) => {
+        if (camera.source) {
+            resolve(true); // Assume it's valid; backend has already checked file existence
+        } else {
+            resolve(false);
+        }
+    });
 }
 
 function checkIPCameraOnline(camera){
