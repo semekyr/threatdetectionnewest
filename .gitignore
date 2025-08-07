@@ -138,6 +138,7 @@ dist
 # Ignore all .py files in root of threatdetectionnewest/
 threatdetectionnewest/dataloader.py
 threatdetectionnewest/tracker.py
+threatdetectionnewest/yolov5s.pt
 threatdetectionnewest/yolov5n.pt
 threatdetectionnewest/detector.py
 threatdetectionnewest/environment.yml
@@ -145,4 +146,5 @@ threatdetectionnewest/environment.yml
 
 # But allow .py files in threatdetectionnewest/models/
 !threatdetectionnewest/models/*.py
+
 
