@@ -10,7 +10,7 @@ import requests
 from pathlib import Path
 
 
-# Check if all dependencies are installed (Debuggin an issue): 
+# Check if all dependencies are installed (Debugging an issue - ignore): 
 def check_dependencies():
     try:
         import flask
@@ -60,7 +60,7 @@ def start_api_server():
 
 # Function to check if detection system should be auto-started:
 def should_auto_start_detection():
-    """Check if detection system should be started automatically"""
+    #Check if detection system should be started automatically
     # Check for command line argument
     if '--auto-start-detection' in sys.argv:
         return True
@@ -113,7 +113,7 @@ def start_detection_system():
 
 # Function to check system status:
 def check_system_status():
-    """Check the status of all system components"""
+    #Check the status of all system components
     print("\nChecking system status...")
     
     # Check API server
@@ -154,14 +154,51 @@ def check_system_status():
 
 # Helper function to handle shutdown signals:
 def signal_handler(signum, frame):
-    print("\nShutting down system...")
+    print(f"\nReceived signal {signum}. Starting graceful shutdown...")
     sys.exit(0)
+
+def cleanup_processes(api_process, detection_process):
+    #Clean up processes gracefully#
+    print("Cleaning up processes...")
+    
+    # Stop detection process first (if running)
+    if detection_process and detection_process.poll() is None:
+        print("Stopping detection system...")
+        detection_process.terminate()
+        try:
+            detection_process.wait(timeout=10)
+            print("Detection system stopped gracefully")
+        except subprocess.TimeoutExpired:
+            print("Detection system taking too long to stop, force-killing...")
+            detection_process.kill()
+            try:
+                detection_process.wait(timeout=5)
+                print("Detection system force-killed")
+            except subprocess.TimeoutExpired:
+                print("Failed to stop detection system")
+    
+    # Stop API server
+    if api_process and api_process.poll() is None:
+        print("Stopping API server...")
+        api_process.terminate()
+        try:
+            api_process.wait(timeout=10)
+            print(" API server stopped gracefully")
+        except subprocess.TimeoutExpired:
+            print("API server taking too long to stop, force-killing...")
+            api_process.kill()
+            try:
+                api_process.wait(timeout=5)
+                print("API server force-killed")
+            except subprocess.TimeoutExpired:
+                print("Failed to stop API server")
+    
+    print("All processes cleaned up")
 
 
 # Main function to start up the system:
 def main():
     print("Threat Detection System Startup")
-    print("=" * 50)
     
     # Set up signal handlers for shutdown
     signal.signal(signal.SIGINT, signal_handler)
@@ -191,24 +228,21 @@ def main():
         print("   Use the frontend to start detection when ready.")
 
     # Print system startup status:
-    print("\n" + "=" * 50)
     print("System startup complete!")
-    print("\n Next steps:")
     print("   1. Start the Electron frontend: npm start")
     print("   2. Navigate to the Dashboard")
     print("   3. Use the detection controls to start/stop the system")
     print("\n Services:")
-    print(f"   • API Server: http://127.0.0.1:5000")
+    print(f"   API Server: http://127.0.0.1:5000")
     if detection_process:
-        print(f"   • Detection System: http://127.0.0.1:5050 (Auto-started)")
+        print(f"   Detection System: http://127.0.0.1:5050 (Auto-started)")
     else:
-        print(f"   • Detection System: http://127.0.0.1:5050 (Manual start)")
+        print(f"   Detection System: http://127.0.0.1:5050 (Manual start)")
     
     print("\nTips:")
     print("   • Use Ctrl+C to stop the system")
     print("   • Check the logs page for system information")
     print("   • Use --auto-start-detection flag to auto-start detection")
-    print("=" * 50)
     
     try:
         # Keep the script running to monitor the subprocesses:
@@ -228,26 +262,7 @@ def main():
         print("\nReceived shutdown signal")
     finally:
         # Cleanup
-        print("Cleaning up processes...")
-        if api_process:
-            api_process.terminate()
-            try:
-                api_process.wait(timeout=5)
-                print("API server stopped")
-            except subprocess.TimeoutExpired:
-                api_process.kill()
-                print("API server force-killed")
-        
-        if detection_process:
-            detection_process.terminate()
-            try:
-                detection_process.wait(timeout=5)
-                print("Detection system stopped")
-            except subprocess.TimeoutExpired:
-                detection_process.kill()
-                print("Detection system force-killed")
-        
-        print("✅ System shutdown complete")
+        cleanup_processes(api_process, detection_process)
 
 if __name__ == "__main__":
     main() 
