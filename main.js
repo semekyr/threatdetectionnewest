@@ -924,6 +924,7 @@ ipcMain.handle('delete-rule', async (event, objClass) => {
 ipcMain.handle('get-influx-alerts', async (event, num) => {
     try {
         // Check if InfluxDB is configured
+        // ADD CHECK FOR TOKEN! Removed it for debugging!
         if (!process.env.INFLUX_TOKEN ) {
             console.log('InfluxDB token:', process.env.INFLUX_TOKEN);
             console.log('InfluxDB not configured - returning empty alerts list');
@@ -1119,6 +1120,7 @@ ipcMain.handle('toggle-alert-enable', async (event, objectType, enabled) => {
 ipcMain.handle('get-system-logs', async () => {
     try {
         // Check if InfluxDB is configured
+        // ADD CHECK FOR TOKEN! Removed for debugging reasons
         if (!process.env.INFLUX_TOKEN) {
             // Print if the condition above is true or not 
         
@@ -1661,3 +1663,4 @@ async function writeSystemLog(message, logType = 'info', category = 'system') {
         }
     }
 }
+
