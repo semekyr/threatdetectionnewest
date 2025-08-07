@@ -28,6 +28,8 @@ const isDev = !app.isPackaged;
 
 
 
+
+
 /* --- Initialize paths and constants --- */
 const CAMERA_PATH = isDev
     ? path.join(__dirname, 'configs/cameras.json')
@@ -67,7 +69,7 @@ function loadEnvironmentVariables() {
     process.env.BACKEND_BASE_URL = process.env.BACKEND_BASE_URL || 'http://127.0.0.1:5000';
     process.env.BACKEND_API_KEY = process.env.BACKEND_API_KEY || 'efecd5a4-40ff-45df-b1d9-0e3256f2265d';
     process.env.INFLUX_URL = process.env.INFLUX_URL || 'http://localhost:8086';
-    process.env.INFLUX_TOKEN = process.env.INFLUX_TOKEN || 'your_influxdb_token_here';
+    process.env.INFLUX_TOKEN = process.env.INFLUX_TOKEN || 'hlzFOUbqafa1O4NsyKTB7urMtBhTmfYGThK-9_meVF9cf-jmc9xvpzPlzMRldWeWxekLWGGqXA1q8phmV8hJ3Q==' ;
     process.env.INFLUX_ORG = process.env.INFLUX_ORG || 'SignalGeneriX';
     process.env.INFLUX_BUCKET = process.env.INFLUX_BUCKET || 'detectionAlerts';
   }
@@ -922,14 +924,15 @@ ipcMain.handle('delete-rule', async (event, objClass) => {
 ipcMain.handle('get-influx-alerts', async (event, num) => {
     try {
         // Check if InfluxDB is configured
-        if (!process.env.INFLUX_TOKEN || process.env.INFLUX_TOKEN === 'your_influxdb_token_here') {
+        if (!process.env.INFLUX_TOKEN ) {
+            console.log('InfluxDB token:', process.env.INFLUX_TOKEN);
             console.log('InfluxDB not configured - returning empty alerts list');
             return [];
         }
 
         // Create a Database instance with fallback values
         const detectionAlertDB = new Database(
-            process.env.INFLUX_TOKEN || 'your_influxdb_token_here',
+            process.env.INFLUX_TOKEN || 'hlzFOUbqafa1O4NsyKTB7urMtBhTmfYGThK-9_meVF9cf-jmc9xvpzPlzMRldWeWxekLWGGqXA1q8phmV8hJ3Q==',
             process.env.INFLUX_ORG || 'SignalGeneriX',
             process.env.INFLUX_BUCKET || 'detectionAlerts',
             process.env.INFLUX_URL || 'http://localhost:8086'
@@ -1116,7 +1119,9 @@ ipcMain.handle('toggle-alert-enable', async (event, objectType, enabled) => {
 ipcMain.handle('get-system-logs', async () => {
     try {
         // Check if InfluxDB is configured
-        if (!process.env.INFLUX_TOKEN || process.env.INFLUX_TOKEN === 'your_influxdb_token_here') {
+        if (!process.env.INFLUX_TOKEN) {
+            // Print if the condition above is true or not 
+        
             console.log('InfluxDB not configured - returning empty logs list');
             return [];
         }
