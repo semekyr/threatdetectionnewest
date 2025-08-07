@@ -1,5 +1,6 @@
 # threatdetectionnewest
-- python start_system.py 
+- python start_system.py
+- in another terminal: cd models, python main.py 
 - in another terminal: npm install, npm start
 - Issues:
   1. Issue with InfluxDB I couldn't fix from previous version without detections (No bucket for logs) 
