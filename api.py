@@ -185,7 +185,6 @@ def write_system_log():
         category = data.get('category', 'system')
         
         # Forward the log to the Electron main process via a simple file-based approach
-        # or we could implement a more sophisticated logging system here
         log_entry = {
             'timestamp': data.get('timestamp', datetime.now().isoformat()),
             'message': message,
@@ -193,7 +192,7 @@ def write_system_log():
             'category': category
         }
         
-        # For now, we'll just print the log and let the Electron app handle the InfluxDB writing
+        # Print the log and let the Electron app handle the InfluxDB writing
         print(f"[{log_type.upper()}] [{category}] {message}")
         
         return jsonify({"success": True, "message": "Log written successfully"}), 200
@@ -208,11 +207,8 @@ def get_system_logs():
         return jsonify({"error": "Unauthorized"}), 401
     
     try:
-        # This endpoint would typically query the InfluxDB logs bucket
-        # For now, we'll return a placeholder response
-        # In a real implementation, this would query the InfluxDB Logs bucket
-        
-        # Placeholder response - in reality this would come from InfluxDB
+
+        # Placeholder response - in reality this would come from InfluxDB (Fix when InfluxDB is working)
         logs = [
             {
                 'timestamp': datetime.now().isoformat(),
@@ -254,9 +250,11 @@ def update_schedule():
     if 'yolov5_deepsort' not in config:
         return jsonify({"error": "Configuration not found"}), 500
     
-    # Modify the schedule for the specified class (for time schedule):
+    # Modify the schedule for the specified class (for time schedule)
     config['yolov5_deepsort'].setdefault('detection_schedule', {})
     config['yolov5_deepsort']['detection_schedule'][class_name] = [{"start": p["start"], "end": p["end"]} for p in periods]
+    # For debugging, print the updated schedule
+    print(f"Updated schedule for {class_name}: {config['yolov5_deepsort']['detection_schedule'][class_name]}")
     # Enable or disable the class:
     tracked_classes =  config['yolov5_deepsort'].get('detector', {}).get('tracked_class', [])
     if enabled is not None: 
