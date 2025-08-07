@@ -3,4 +3,3 @@
 - in another terminal: npm install, npm start
 - Issues:
   1. Issue with InfluxDB I couldn't fix from previous version without detections,
-  2. API runs the detections correctly in the background apart from Youtube videos, does not load in the frontend UI, 
